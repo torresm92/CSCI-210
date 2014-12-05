@@ -1,8 +1,0 @@
-#!/bin/bash
-# fortune_mkweb
-# torresm
-
-{ echo "$HDR";
-cat $HOME/inclass/fortune.txt;
-echo "$FTR"; } > $HOME/public_html/fortune.html
-#eof
