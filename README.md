@@ -1,2 +1,2 @@
-CSCI-210
+My CSCI-210 Portfolio
 ========
