@@ -1,0 +1,55 @@
+#!/bin/bash
+# geoip2
+# torresm
+# 
+
+#1
+IPLST=$(cat /home/access_log | awk '{print $1}' | sort -n | uniq | grep -v '^10\.' | grep -v ':' | tail -5)
+CIPLST=$(xzcat /home/acc*.xz | awk '{print $1}' | sort -n | uniq | grep -v '^10\.' | grep -v ':' | tail -5)
+echo "$IPLST" > /home/torresm/inclass/ip2.lst
+echo "$CIPLST" >> /home/torresm/inclass/ip2.lst
+echo "IP Addresses stored"
+
+#2
+cat /dev/null > first.pass
+ipaddr=$(cat /home/torresm/inclass/ip2.lst)
+for x in $ipaddr
+do
+ curl -s http://freegeoip.net/csv/$x >> first.pass
+ echo -n "."
+done
+echo -e "\nGeoIP data retrieved"
+
+#3
+mv geoip.sqlite3 geoip.sqlite3.bak
+
+sqlite3 geoip.sqlite3 << HEREDOC
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE "visitors" (
+  "ip" char(16) NOT NULL,
+  "country_code" char(2) DEFAULT NULL,
+  "country_name" char(25) DEFAULT NULL,
+  "region_code" char(10) DEFAULT NULL,
+  "region_name" char(15) DEFAULT NULL,
+  "city" char(15) DEFAULT NULL,
+  "zipcode" char(10) DEFAULT NULL,
+  "latitude" char(10) DEFAULT NULL,
+  "longitude" char(10) DEFAULT NULL,
+  "metro_code" char(3) DEFAULT NULL,
+  "area_code" char(3) DEFAULT NULL
+);
+COMMIT;
+HEREDOC
+echo "New database created: geoip.sqlite3"
+echo "New table created: visitors"
+echo ".schema" | sqlite3 geoip.sqlite3
+
+cat first.pass | tr ',' '|' > last.pass
+echo ".import last.pass visitors" | sqlite3 geoip.sqlite3
+echo "GeoIP data imported"
+
+#4
+echo "select ip,latitude,longitude from visitors;"  | sqlite3 geoip.sqlite3 > ip_latlong.log
+echo "ip_latlong.log created"
+echo "Done."

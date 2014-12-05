@@ -1,0 +1,7 @@
+#!/bin/bash
+# dialog testing
+# torresm
+dialog --no-lines --inputbox "Enter your name:" 10 40 2>answer
+echo >>answer
+NAME=$(cat answer)
+dialog --no-lines --msgbox "$NAME" 10 40

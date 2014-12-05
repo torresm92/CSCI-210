@@ -1,0 +1,13 @@
+#!/bin/bash
+# script1
+# lab 4 script1
+# torresm
+echo -n "Enter your first name: "
+read NAME1
+echo -n "Enter your first number: "
+read NUM1
+echo -n "Enter your second number: "
+read NUM2
+SUM1=$((NUM1+NUM2))
+echo "Hello, $NAME1! Your sum is $SUM1"
+echo $(date +%s) $NAME1 $SUM1 >> $HOME/inclass/script1.log
