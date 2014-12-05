@@ -1,9 +1,0 @@
-#!/bin/bash
-# geoip1
-# torresm
-# 
-
-
-IPLST=$(cat "/home/access_log" | awk '{print $1}' | sort -n | uniq | grep -v '^10\.'| grep -v ':' | tail -50)
-
-echo "$IPLST" > /home/torresm/inclass/ip.lst

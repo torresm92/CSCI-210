@@ -1,8 +1,0 @@
-#!/bin/bash
-# daily_fortune
-# torresm
-cd /home/torresm/inclass
-fortune > /home/torresm/inclass/fortune.txt
-/home/torresm/inclass/fortune_mkweb
-cat /home/torresm/inclass/fortune.txt | mail -s"Daily Fortune" mtorres46@student.yosemite.edu
-echo $(date +%Y%m%d)
