@@ -1,0 +1,7 @@
+#!/bin/bash
+# ts_mkweb
+# torresm
+echo $HDR > $HOME/public_html/timesheet.html
+cat $HOME/inclass/timesheet.log >> $HOME/public_html/timesheet.html
+echo $FTR >> $HOME/public_html/timesheet.html
+#eof

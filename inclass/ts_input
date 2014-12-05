@@ -1,0 +1,11 @@
+#!/bin/bash
+# ts_input
+# torresm 20141001
+echo "$TD"
+echo "Enter project code and a brief description"
+read INPVAR
+echo -n "$TD" "| " >> "$HOME"/inclass/timesheet.log
+echo "$INPVAR" >> "$HOME"/inclass/timesheet.log
+echo "Done."
+"$HOME"/inclass/ts_mkweb
+#eof
