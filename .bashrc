@@ -27,7 +27,7 @@ export PATH=$PATH:$HOME/inclass
 #export PILOTRATE=115200
 
 test -s ~/.alias && . ~/.alias || true
-test -s ~/.funcs && . ~/.alias || true
+test -s ~/.funcs && . ~/.funcs || true
 export VNCID=$(($(id -u) - 990))
 #see .funcs
 #export HDR="<!DOCTYPE html><html><head><meta charset="UTF-8"><title>"$(id -un)" "{$TD}"</title></head><body><pre><p>-"
