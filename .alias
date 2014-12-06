@@ -1,0 +1,8 @@
+# torresm
+# .alias
+#alias lports="netstat -taupen"
+#alias l='ls -ilasF'
+#alias lr='ls -ltraF'
+#alias ll='ls -l'
+alias odhex='od -A x -t x1z -v'
+#alias mtd='/home/dkp/bin/maketodayweb'
