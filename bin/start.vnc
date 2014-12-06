@@ -1,0 +1,6 @@
+#!/bin/bash
+# start.vnc
+# for torresm
+#
+vncserver :$VNCID -depth 16 -geometry 1024x768
+#vncserver :$VNCID -depth 16 -geometry 800x600

@@ -1,0 +1,10 @@
+#!/bin/bash
+# diskhog
+# torresm
+
+LST=$(ls -d */ )
+for x in $LST
+do
+  du -sh $x 
+done
+

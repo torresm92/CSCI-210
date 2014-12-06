@@ -1,0 +1,10 @@
+#!/bin/bash
+# speedo
+clear
+x="0"
+y="10000"
+while [ $x -lt $y ]
+ do 
+ x=$((x + 1))
+ echo -n "*"
+done
